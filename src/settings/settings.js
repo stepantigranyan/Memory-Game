@@ -22,95 +22,95 @@ function getCards(rows, columns) {
 }
 
 class Settings {
-    #cards;
-    #rows;
-    #columns;
-    #timer;
-    #checkedCardsCount;
+  #cards;
+  #rows;
+  #columns;
+  #timer;
+  #checkedCardsCount;
 
-    constructor(rows, columns) {
-        this.#cards = getCards(rows, columns);
-        this.#rows = rows;
-        this.#columns = columns;
-        this.#timer = Math.floor(rows * columns * 4);
+  constructor(rows, columns) {
+    this.#cards = getCards(rows, columns);
+    this.#rows = rows;
+    this.#columns = columns;
+    this.#timer = Math.floor(rows * columns * 4);
 
-        this.firstCard = null;
-        this.secondCard = null;
+    this.firstCard = null;
+    this.secondCard = null;
 
-        this.locked = false;
-        this.isRunning = false;
+    this.locked = false;
+    this.isRunning = false;
 
-        this.#checkedCardsCount = 0;
-    }
+    this.#checkedCardsCount = 0;
+  }
 
-    static create(rows, columns) {
-        return new Settings(rows, columns);
-    }
+  static create(rows, columns) {
+    return new Settings(rows, columns);
+  }
 
-    getCards() {
-        return this.#cards;
-    }
+  getCards() {
+    return this.#cards;
+  }
 
-    getSizes() {
-        return { rows: this.#rows, columns: this.#columns };
-    }
+  getSizes() {
+    return { rows: this.#rows, columns: this.#columns };
+  }
 
-    getTimer() {
-        return this.#timer;
-    }
+  getTimer() {
+    return this.#timer;
+  }
 
-    decrementTimer() {
-        this.#timer--;
-    }
+  decrementTimer() {
+    this.#timer--;
+  }
 
-    getCheckedCardsCount() {
-        return this.#checkedCardsCount;
-    }
+  getCheckedCardsCount() {
+    return this.#checkedCardsCount;
+  }
 
-    incrementCheckedCards() {
-        this.#checkedCardsCount++;
-    }
+  incrementCheckedCards() {
+    this.#checkedCardsCount++;
+  }
 
-    getFirstCard() {
-        return this.firstCard;
-    }
+  getFirstCard() {
+    return this.firstCard;
+  }
 
-    setFirstCard(value) {
-        this.firstCard = value;
-    }
+  setFirstCard(value) {
+    this.firstCard = value;
+  }
 
-    getSecondCard() {
-        return this.secondCard;
-    }
+  getSecondCard() {
+    return this.secondCard;
+  }
 
-    setSecondCard(value) {
-        this.secondCard = value;
-    }
+  setSecondCard(value) {
+    this.secondCard = value;
+  }
 
-    clearFirstAndSecondCards() {
-        this.firstCard.classList.remove('rotate-y-[180deg]');
-        this.secondCard.classList.remove('rotate-y-[180deg]');
-        this.firstCard.innerHTML = '';
-        this.secondCard.innerHTML = '';
-        this.firstCard = null;
-        this.secondCard = null;
-    }
+  clearFirstAndSecondCards() {
+    this.firstCard.classList.remove('rotate-y-[180deg]');
+    this.secondCard.classList.remove('rotate-y-[180deg]');
+    this.firstCard.innerHTML = '';
+    this.secondCard.innerHTML = '';
+    this.firstCard = null;
+    this.secondCard = null;
+  }
 
-    getLocked() {
-        return this.locked;
-    }
+  getLocked() {
+    return this.locked;
+  }
 
-    setLocked(value) {
-        this.locked = value;
-    }
+  setLocked(value) {
+    this.locked = value;
+  }
 
-    getRunning() {
-        return this.isRunning;
-    }
+  getRunning() {
+    return this.isRunning;
+  }
 
-    setRunning(value) {
-        this.isRunning = value;
-    }
+  setRunning(value) {
+    this.isRunning = value;
+  }
 }
 
 export default Settings;

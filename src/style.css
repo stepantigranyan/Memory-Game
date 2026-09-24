@@ -1,11 +1,12 @@
 @import 'tailwindcss';
 
-.active, .stop {
-    background-color: var(--color-rose-800);
-    border-color: var(--color-rose-800);
-    color: var(--color-white);
+.active,
+.stop {
+  background-color: var(--color-rose-800);
+  border-color: var(--color-rose-800);
+  color: var(--color-white);
 }
 
 i {
-    transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
