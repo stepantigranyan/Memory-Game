@@ -7,7 +7,7 @@ function shuffleCards(cards) {
 function getCards(rows, columns) {
     const shuffledCards = shuffleCards(ALL_CARDS);
     const halfCards = shuffledCards.slice(0, (rows * columns) / 2);
-    const cards = [...halfCards, ...halfCards];
+    const cards = shuffleCards([...halfCards, ...halfCards]);
     const matrix = [];
 
     for (let i = 0; i < rows; i++) {
