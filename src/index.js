@@ -17,6 +17,19 @@ const gameMessage = document.getElementById('game-message');
 let settings;
 let timerInterval;
 
+// Set Timer
+
+function setTimer() {
+  timerInterval = setInterval(() => {
+    settings.decrementTimer();
+    timerContainer.innerText = updateTimer(settings.getTimer());
+    if (!settings.getTimer()) {
+      endGame('Lose');
+    }
+  }, 1000);
+}
+
+
 // Card Flipping and Checking Logic
 // =================================================================
 
@@ -178,13 +191,12 @@ function drawBoard() {
   }
 
   boardContainer.append(board);
-  timerContainer.innerText = updateTimer();
 }
 
 function drawModeButtons() {
   allModeButtons.forEach((button) => {
     button.addClick(() => {
-      settings = Settings.create(button.rows, button.columns);
+      settings = new Settings(button.rows, button.columns);
       startButton.disabled = false;
     });
 
@@ -214,7 +226,6 @@ function reset() {
   stopButton.classList.add('hidden');
   continueButton.classList.add('hidden');
 
-  startButton.classList.remove('hidden');
   startButton.disabled = true;
 
   resetButton.classList.add('hidden');
@@ -232,7 +243,6 @@ function reset() {
 function showWin(message) {
   gameMessage.innerText = `You ${message}!`;
   modeButtons.classList.add('hidden');
-  stopButton.classList.add('hidden');
   resetButton.classList.add('hidden');
   timerContainer.innerText = '';
   clearTimeout(timerInterval);
@@ -245,44 +255,33 @@ function showWin(message) {
 function start() {
   drawModeButtons();
 
-  startButton.addEventListener('click', (e) => {
-    e.currentTarget.classList.add('hidden');
+  startButton.addEventListener('click', () => {
     stopButton.classList.remove('hidden');
     settings.setRunning(true);
     modeButtons.classList.add('hidden');
     resetButton.classList.remove('hidden');
     drawBoard();
 
-    timerInterval = setInterval(() => {
-      settings.decrementTimer();
-      timerContainer.innerText = updateTimer(settings.getTimer());
-      if (!settings.getTimer()) {
-        endGame('Lose');
-      }
-    }, 1000);
+    timerContainer.innerText = updateTimer(settings.getTimer());
+
+    setTimer();
   });
 
-  stopButton.addEventListener('click', (e) => {
-    e.currentTarget.classList.add('hidden');
+  stopButton.addEventListener('click', () => {
+    stopButton.classList.add('hidden');
     continueButton.classList.remove('hidden');
     settings.setRunning(false);
     resetButton.disabled = false;
     clearInterval(timerInterval);
   });
 
-  continueButton.addEventListener('click', (e) => {
-    e.currentTarget.classList.add('hidden');
+  continueButton.addEventListener('click', () => {
+    continueButton.classList.add('hidden');
     stopButton.classList.remove('hidden');
     settings.setRunning(true);
     resetButton.disabled = true;
 
-    timerInterval = setInterval(() => {
-      settings.decrementTimer();
-      timerContainer.innerText = updateTimer(settings.getTimer());
-      if (!settings.getTimer()) {
-        endGame('Lose');
-      }
-    }, 1000);
+    setTimer();
   });
 
   resetButton.addEventListener('click', reset);

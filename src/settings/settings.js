@@ -1,4 +1,4 @@
-import {ALL_CARDS} from '../consts/const.js';
+import { ALL_CARDS } from '../consts/const.js';
 
 function shuffleCards(cards) {
     return cards.sort(() => Math.random() - 0.5);
@@ -41,10 +41,6 @@ class Settings {
     this.isRunning = false;
 
     this.#checkedCardsCount = 0;
-  }
-
-  static create(rows, columns) {
-    return new Settings(rows, columns);
   }
 
   getCards() {

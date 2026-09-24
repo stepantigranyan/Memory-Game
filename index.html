@@ -31,36 +31,29 @@
           </div>
         </div>
         <div class="flex flex-col gap-y-4">
-          <div id="mode-buttons">
+
+          <div id="mode-buttons" class="flex flex-col gap-y-3 items-center">
             <div class="flex flex-col gap-y-4">
               <h2 id="mode-title" class="text-cyan-900 text-center text-3xl">
                 Choose game mode
               </h2>
-              <div
-                id="mode-buttons-container"
-                class="flex gap-x-5 justify-center"
-              ></div>
+              <div id="mode-buttons-container" class="flex gap-x-5 justify-center"></div>
             </div>
+
+            <button disabled id="start-button" class="cursor-pointer px-5 py-2 bg-rose-100 border border-rose-400 text-cyan-900 rounded-xl disabled:bg-gray-500 disabled:text-gray-800 disabled:border-gray-800">
+              Start
+            </button>
           </div>
-          <span
-            id="timer-container"
-            class="text-4xl text-center text-cyan-900"
-          ></span>
+
           <div class="flex justify-center">
             <div class="flex gap-x-5">
-              <button
-                disabled
-                id="start-button"
-                class="cursor-pointer px-5 py-2 bg-rose-100 border border-rose-400 text-cyan-900 rounded-xl disabled:bg-gray-500 disabled:text-gray-800 disabled:border-gray-800"
-              >
-                Start
-              </button>
               <button
                 id="stop-button"
                 class="hidden cursor-pointer px-5 py-2 bg-rose-100 border border-rose-400 text-cyan-900 rounded-xl"
               >
-                Stop</button
-              ><button
+                Stop
+              </button>
+              <button
                 id="continue-button"
                 class="hidden cursor-pointer px-5 py-2 bg-rose-100 border border-rose-400 text-cyan-900 rounded-xl"
               >
@@ -76,6 +69,12 @@
               </button>
             </div>
           </div>
+
+          <span
+                  id="timer-container"
+                  class="text-4xl text-center text-cyan-900"
+          ></span>
+
         </div>
       </div>
     </main>
